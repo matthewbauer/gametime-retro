@@ -47,7 +47,7 @@ fetchCore = (corefile, platform) ->
       encoding: null
     , (err, resp, body) ->
       if err or resp.statusCode != 200
-        reject()
+        reject(err)
         return
       zip = new JSZip body
       file = zip.file corefile
@@ -55,9 +55,9 @@ fetchCore = (corefile, platform) ->
         reject()
         return
       corepath = getCorePath corefile, platform
-      fs.writeFile corepath, file.asArrayBuffer(), (err) ->
+      fs.writeFile corepath, file.asNodeBuffer(), (err) ->
         if err
-          reject()
+          reject(err)
           return
         resolve corepath
 

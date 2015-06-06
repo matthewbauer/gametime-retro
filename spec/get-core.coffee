@@ -29,7 +29,7 @@ for corename in cores
               body.should.exist
               done()
           it "should be able to fetch core", (done) ->
-            @timeout 3000
+            @timeout 4000
             core.fetchCore(corefile, platform).then (path) ->
               should.exist path
               fs.readFile path, (err, data) ->
