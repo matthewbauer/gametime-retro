@@ -15,9 +15,8 @@ getCoreFile = (core, platform) ->
   else
     "#{core}.so"
 
-getCorePath = (core, platform) ->
+getCorePath = (corefile, platform) ->
   platform ?= process.platform
-  corefile = getCoreFile(core, platform)
   corepath = path.join os.tmpdir(), corefile
 
 getCoreURL = (corefile, platform, arch) ->
@@ -64,8 +63,8 @@ fetchCore = (corefile, platform) ->
 
 getCore = (core) ->
   new Promise (resolve, reject) ->
-    corepath = getCorePath(core)
-    corefile = getCoreFile(core)
+    corefile = getCoreFile core
+    corepath = getCorePath corefile
     fs.exists corepath, (exists) -> # DEPRECATED!!!
       if exists
         resolve corepath

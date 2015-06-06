@@ -1,8 +1,8 @@
 {
   "name": "gametime-retro",
   "productName": "GameTime Retro Core Downloaders",
-  "version": "0.1.0",
-  "main": "./exports.js",
+  "version": "0.1.1",
+  "main": "exports.js",
   "author": "Matthew Bauer <mjbauer95@gmail.com>",
   "github": "matthewbauer/gametime-retro",
   "repository": {
