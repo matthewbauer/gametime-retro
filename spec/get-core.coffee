@@ -19,7 +19,7 @@ for corename in cores
     describe "Working with #{corename} library.", ->
       for platform in platforms
         do (platform) ->
-          corefile = core.getCoreFile(corename, platform)
+          corefile = core.getCoreFile corename, platform
           it "url should resolve to 200 for #{platform}", (done) ->
             @timeout 3000
             url = core.getCoreURL corefile, platform
@@ -30,7 +30,8 @@ for corename in cores
               done()
           it "should be able to fetch core", (done) ->
             @timeout 4000
-            core.fetchCore(corefile, platform).then (path) ->
+            core.fetchCore corefile, platform
+            .then (path) ->
               should.exist path
               fs.readFile path, (err, data) ->
                 should.not.exist err
@@ -39,7 +40,8 @@ for corename in cores
             , done
           it "caching should work", (done) ->
             @timeout 2000
-            core.getCore(corename).then (path) ->
+            core.getCore corename
+            .then (path) ->
               fs.readFile path, (err, data) ->
                 should.not.exist err
                 should.exist data
