@@ -15,6 +15,7 @@
   "scripts": {
     "test": "grunt test",
     "prepublish": "grunt build test",
+    "build": "grunt build",
     "coveralls": "istanbul report"
   },
   "dependencies": {
