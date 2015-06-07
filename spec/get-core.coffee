@@ -38,7 +38,7 @@ for corename in cores
                 done()
             , done
           it "caching should work", (done) ->
-            @timeout 1000
+            @timeout 2000
             core.getCore(corename).then (path) ->
               fs.readFile path, (err, data) ->
                 should.not.exist err
